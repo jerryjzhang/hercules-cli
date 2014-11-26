@@ -28,7 +28,7 @@ Commands:
 	help      show usage for a specific command
 	create    create an app
 	deploy    deploy an app
-	scale     change formation
+	scale     Scale an app
 
 See 'hercules help <command>' for more information on a specific command.
 `[1:]

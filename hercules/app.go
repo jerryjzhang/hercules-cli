@@ -1,14 +1,20 @@
 package main
 
 import (
-	//"fmt"
 	"fmt"
 	"log"
-	"os"
 	"os/exec"
+	"strconv"
 	"strings"
-	"github.com/tragicjun/hercules-cli/types"
+
 	"github.com/flynn/flynn/Godeps/_workspace/src/github.com/flynn/go-docopt"
+	"github.com/jmcvetta/napping"
+	"github.com/tragicjun/hercules-cli/types"
+)
+
+var (
+	//apiserverURL = os.Getenv("HERCULES_URL")
+	apiserverURL = "http://localhost:58080"
 )
 
 func init() {
@@ -20,80 +26,90 @@ Create an application in Hercules.
 Examples:
 
 	$ hercules create dsf
-	Created dsf
+	Created dsf with id 1417019037871
 `)
 	register("deploy", runDeploy, `
-usage: hercules deploy -a <appName> [-s <url>]
+usage: hercules deploy <appName> [-s <svnURL> -i <imageURI>]
 
 Options:
-	-a set app name
 	-s, --svn-url <url>  set the svn url of your code
+	-i, --docker-image <image> set the uri of your docker image
 
-Deploy an application in Flynn.
+Deploy an application in Hercules.
 
 Examples:
 
-	$ hercules deploy -a dsf -s http://svnURL
-	Exporing svn code
-	Compiling code
-	Deployed
+	$ hercules deploy dsf --svn-url http://svnURL
+	Deployed application dsf
+`)
+	register("scale", runScale, `
+usage: hercules scale <appName> [<programName>=<replica> <programName>=<replica>...]
+
+Options:
+
+Scale any programs of an application in Hercules.
+
+Examples:
+
+	$ hercules scale dsf web=3 db=1
+	Scaled application dsf
 `)
 }
 
 func runCreate(args *docopt.Args) error {
 	var appName = args.String["<appName>"]
-	app := types.App{}
-	app.Name = appName
 	//exec.Command("git", "remote", "remove", "flynn").Run()
 	//exec.Command("git", "remote", "add", "flynn", gitURLPre(clusterConf.GitHost)+app.Name+gitURLSuf).Run()
-	os.Setenv("JFLYNN_APP", appName)
-	log.Printf("Created %s", app.Name)
+	resp, _ := napping.Post(apiserverURL+"/apps/create/"+appName, nil, nil, nil)
+	log.Printf("Created app %s with id %s", appName, resp.RawText())
 	return nil
 }
 
 func runDeploy(args *docopt.Args) error {
-	var appName = args.String["-a"]
-	var svn = args.String["--svn-url"]
-	log.Printf("Exporting %s...", svn)
+	var appName = args.String["<appName>"]
+	req := types.DeployRequest{}
 
-	var cmd = "docker run -it centos echo haha"
-	tempDir := " /tmp/" + appName
-
-	{
-
-		cmd = "docker run -it -v /tmp:/tmp tegdsf/centos svn export " + svn + tempDir
-		log.Println("Executing " + cmd)
-		_, err := execCmd(cmd)
-		if err != nil {
-			fmt.Printf("%s", err)
-		}
-	}
-	{
-		cmd = "tar cvf " + tempDir + ".tar --directory=/tmp/" + appName + " ."
-		log.Println("Executing " + cmd)
-		_, err := execCmd(cmd)
-		if err != nil {
-			fmt.Printf("%s", err)
-		}
-	}
-	{
-		cmd = "cat " + tempDir + ".tar| docker run -i -v /tmp/buildpacks:/tmp/buildpacks -e HTTP_SERVER_URL=http://192.168.59.103:8080 -a stdin flynn/slugbuilder - > /tmp/slug.tgz"
-		log.Println("Executing " + cmd)
-		_, err := execCmd(cmd)
-		if err != nil {
-			fmt.Printf("%s", err)
-		}
-	}
-	{
-		cmd = "cat /tmp/slug.tgz | docker run -i -p 19800:19800 -e PORT=19800 -a stdin -a stdout -a stderr flynn/slugrunner start web "
-		log.Println("Executing " + cmd)
-		_, err := execCmd(cmd)
-		if err != nil {
-			fmt.Printf("%s", err)
-		}
+	svn := args.String["--svn-url"]
+	if svn != "" {
+		req.SvnURL = svn
 	}
 
-	log.Printf("Created release for app %s", appName)
+	img := args.String["--docker-image"]
+	if img != "" {
+		req.DockerImage = img
+	}
+
+	resp, _ := napping.Post(apiserverURL+"/apps/deploy/"+appName, &req, nil, nil)
+	if resp.Status() != 200 {
+		log.Printf("Deploy request failed")
+		log.Fatal(resp.RawText())
+	}
+	log.Printf("Deployed app %s", appName)
+	return nil
+}
+
+func runScale(args *docopt.Args) error {
+	var appName = args.String["<appName>"]
+	req := types.ScaleRequest{}
+	req.ProgramReplica = make(map[string]int)
+	for _, arg := range args.All["<programName>=<replica>"].([]string) {
+		i := strings.IndexRune(arg, '=')
+		if i < 0 {
+			fmt.Println(commands["scale"].usage)
+		}
+		val, err := strconv.Atoi(arg[i+1:])
+		if err != nil {
+			fmt.Println(commands["scale"].usage)
+		}
+		//replica, err := strconv.Atoi(val)
+		req.ProgramReplica[arg[:i]] = val
+	}
+	resp, _ := napping.Post(apiserverURL+"/apps/scale/"+appName, &req, nil, nil)
+	if resp.Status() != 200 {
+		log.Printf("Scale request failed")
+		log.Fatal(resp.RawText())
+	}
+	log.Printf("Scaled app %s", appName)
 	return nil
 }
 
