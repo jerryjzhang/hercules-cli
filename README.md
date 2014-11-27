@@ -39,11 +39,23 @@ Set environment variables of an application in Hercules.
 	
 ###cmd
 
-Set program commands of an application in Hercules
+Set program commands of an application in Hercules.
+
+	Usage: hercules cmd [-t <proc>]
+		   hercules cmd set [-t <proc>] <var>=<val>...
+		   hercules cmd unset [-t <proc>] <var>...
+		   hercules cmd get [-t <proc>] <var>
+	Examples: 
 
 ###entrypoint
 
 Set program entrypoints of an application in Hercules
+
+	Usage: hercules entrypoint [-t <proc>]
+		   hercules entrypoint set [-t <proc>] <var>=<val>...
+		   hercules entrypoint unset [-t <proc>] <var>...
+		   hercules entrypoint get [-t <proc>] <var>
+	Examples: 
 
 ###scale
 
@@ -57,3 +69,11 @@ Scale programs of an application in Hercules.
 ###ps
 
 List all running processes of an application.
+
+	Usage: hercules ps <appName>
+	Examples:
+	    $ hercules ps dsf
+	    ID            TYPE
+		141701903990  web
+		141701903991  web
+		141701903992  db
