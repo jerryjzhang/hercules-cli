@@ -40,10 +40,9 @@ Deploy an application in Hercules.
 
 Set environment variables of an application in Hercules.
 
-	Usage: hercules env [-t <proc>]
-		   hercules env set [-t <proc>] <var>=<val>...
-		   hercules env unset [-t <proc>] <var>...
-		   hercules env get [-t <proc>] <var>
+	Usage: hercules env <appName> set -p <programName> -e <env>=<val>...
+		   hercules env <appName> unset -p <programName> -e <env>...
+		   hercules env <appName> get -p <programName <env>
 	Examples: 
 	
 ###cmd
@@ -51,8 +50,7 @@ Set environment variables of an application in Hercules.
 Set program commands of an application in Hercules.
 
 	Usage: hercules cmd <appName> set -p <programName>=<cmd>...
-	   	   hercules cmd <appName> unset -p <programName>=<cmd>...
-	   	   hercules cmd <appName> get -p <programName>=<cmd>
+	   	   hercules cmd <appName> get -p <programName>
 	Examples: 
 	
 	
@@ -61,8 +59,7 @@ Set program commands of an application in Hercules.
 Set program entrypoints of an application in Hercules
 
 	Usage: hercules entrypoint <appName> set -p <programName>=<entrypoint>...
-		   hercules entrypoint <appName> unset -p <programName>=<entrypoint>...
-		   hercules entrypoint <appName> get -p <programName>=<entrypoint>...
+		   hercules entrypoint <appName> get -p <programName>
 	Examples: 
 
 ###scale
