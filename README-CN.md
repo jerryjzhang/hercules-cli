@@ -22,10 +22,10 @@
 
     用法: hercules deploy <appName> (-s <svnURL> | -i <imageURI> | -f <filePath>) [-e <env>=<value>...]
     选项:
-    -s, --svn-url <svnURL>  源代码的SVN地址
-    -i, --docker-image <imageURI>  docker镜像的URI
-    -f, --docker-file <filePath>  dockerfile的路径
-    -e, --env <env>=<value>  应用级别的环境变量设置
+        -s, --svn-url <svnURL>  源代码的SVN地址
+        -i, --docker-image <imageURI>  docker镜像的URI
+        -f, --docker-file <filePath>  dockerfile的路径
+        -e, --env <env>=<value>  应用级别的环境变量设置
     示例:
     $ hercules deploy dsf -s http://svnURL -e DB_URL=localhost:3006 
     Created release with id 141701903990
@@ -56,9 +56,9 @@
           hercules program <appName> delete -n <name>
           hercules program <appName> list
     选项：
-    -e, --env <env>=<val>  程序级别的环境变量设置
-    -c, --cmd <programName>=<cmd>  程序的启动命令设置
-    -p, --entrypoint <programName>=<entrypoint>  程序的入口命令设置
+        -e, --env <env>=<val>  程序级别的环境变量设置
+        -c, --cmd <programName>=<cmd>  程序的启动命令设置
+        -p, --entrypoint <programName>=<entrypoint>  程序的入口命令设置
     示例:
         $ hercules program dsf save -n web -c web=start.sh -e DB_URL=localhost:3006 
         Saved program web
