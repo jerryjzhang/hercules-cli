@@ -6,7 +6,7 @@ Hercules Command Line
 ###Create app
 
     usage: hercules create <appName>
-    Create an application in Hercules.
+    Descption: Create an application in Hercules.
     Examples:
     	$ hercules create dsf
     	Created dsf with id 1417019037871
@@ -17,7 +17,7 @@ Hercules Command Line
     Options:
     	-s, --svn-url <url>  set the svn url of your code
     	-i, --docker-image <image> set the uri of your docker image
-    Deploy an application in Hercules.
+    Descption: Deploy an application in Hercules.
     Examples:
     	$ hercules deploy dsf --svn-url http://svnURL
     	Deployed application dsf
@@ -25,8 +25,7 @@ Hercules Command Line
 ###Scale app
 
     usage: hercules scale <appName> [<programName>=<replica> <programName>=<replica>...]
-    Options:
-    Scale any programs of an application in Hercules.
+    Descption: Scale any programs of an application in Hercules.
     Examples:
     	$ hercules scale dsf web=3 db=1
     	Scaled application dsf
