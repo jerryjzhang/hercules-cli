@@ -5,11 +5,13 @@ Hercules Command Line
 
 ###Create app
 
+```bash
     usage: hercules create <appName>
     Descption: Create an application in Hercules.
     Examples:
     	$ hercules create dsf
     	Created application with id 1417019037871
+```
 
 ###Deploy app
 
