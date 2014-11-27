@@ -5,12 +5,21 @@ To list available commands, run "hercules help".
 
 ###create
 
-Create an application in Hercules
+Create an application in Hercules.
 
     Usage: hercules create <appName>
     Examples:
     	$ hercules create dsf
     	Created application with id 1417019037871
+
+###delete
+
+Delete an application in Hercules.
+
+	Usage: hercules delete <appName>
+	Examples:
+		$ hercules delete dsf
+		Deleted application dsf
 
 ###deploy
 
@@ -41,20 +50,18 @@ Set environment variables of an application in Hercules.
 
 Set program commands of an application in Hercules.
 
-	Usage: hercules cmd [-t <proc>]
-		   hercules cmd set [-t <proc>] <var>=<val>...
-		   hercules cmd unset [-t <proc>] <var>...
-		   hercules cmd get [-t <proc>] <var>
+	Usage: hercules cmd <appName> set -p <programName>=<cmd>...
+		   hercules cmd <appName> unset -p <programName>=<cmd>...
+		   hercules cmd <appName> get -p <programName>=<cmd>
 	Examples: 
 
 ###entrypoint
 
 Set program entrypoints of an application in Hercules
 
-	Usage: hercules entrypoint [-t <proc>]
-		   hercules entrypoint set [-t <proc>] <var>=<val>...
-		   hercules entrypoint unset [-t <proc>] <var>...
-		   hercules entrypoint get [-t <proc>] <var>
+	Usage: hercules entrypoint <appName> set -p <programName>=<entrypoint>...
+		   hercules entrypoint <appName> unset -p <programName>=<entrypoint>...
+		   hercules entrypoint <appName> get -p <programName>=<entrypoint>...
 	Examples: 
 
 ###scale
