@@ -27,11 +27,11 @@ Deploy an application in Hercules.
 
     Usage: hercules deploy <appName> [-s <svnURL> -i <imageURI> -e <env>=<value> -c <programName>=<cmd> -p <programName>=<entrypoint>]
     Options:
-    	-s, --svn-url <url>,  set the svn url of your code
-    	-i, --docker-image <image>, set the uri of your docker image
-    	-e, --env <env>=<value>, set application-level environment variable
-    	-c, --cmd <programName>=<cmd>, set cmd of a program
-    	-p, --entrypoint <programName>=<entrypoint>, set entrypoint of a program
+    	-s, --svn-url <url>,  the svn url of your code
+    	-i, --docker-image <image>, the uri of your docker image
+    	-e, --env <env>=<value>, the application-level environment variable
+    	-c, --cmd <programName>=<cmd>, the cmd of a program
+    	-p, --entrypoint <programName>=<entrypoint>, the entrypoint of a program
     Examples:
     	$ hercules deploy dsf -s http://svnURL -c web=start.sh -e DB_URL=localhost:3006 
     	Created release with id 141701903990
@@ -40,9 +40,12 @@ Deploy an application in Hercules.
 
 Set environment variables of an application in Hercules.
 
-	Usage: hercules env <appName> set -p <programName> -e <env>=<val>...
-		   hercules env <appName> unset -p <programName> -e <env>...
-		   hercules env <appName> get -p <programName <env>
+	Usage: hercules env <appName> set [-p <programName>] -e <env>=<val>...
+		   hercules env <appName> unset [-p <programName>] -e <env>...
+		   hercules env <appName> get [-p <programName] -e <env>
+	Options:
+		-p, --program <programName>, the name of the program to be set/unset/get
+		-e, --env <env>, the environment variable
 	Examples: 
 	
 ###cmd
@@ -51,6 +54,8 @@ Set program commands of an application in Hercules.
 
 	Usage: hercules cmd <appName> set -p <programName>=<cmd>...
 	   	   hercules cmd <appName> get -p <programName>
+	Options:
+		-p, --program <programName>, the name of the program to be set/get
 	Examples: 
 	
 	
@@ -60,6 +65,8 @@ Set program entrypoints of an application in Hercules
 
 	Usage: hercules entrypoint <appName> set -p <programName>=<entrypoint>...
 		   hercules entrypoint <appName> get -p <programName>
+	Options:
+		-p, --program <programName>, the name of the program to be set/get
 	Examples: 
 
 ###scale
