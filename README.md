@@ -38,7 +38,7 @@ Deploy an application in Hercules.
 
 ###env
 
-Set environment variables of an application in Hercules.
+Set/Get environment variables of an application in Hercules.
 
 	Usage: hercules env <appName> set [-p <programName>] -e <env>=<val>...
 		   hercules env <appName> unset [-p <programName>] -e <env>...
@@ -50,7 +50,7 @@ Set environment variables of an application in Hercules.
 	
 ###cmd
 
-Set program commands of an application in Hercules.
+Set/Get program commands of an application in Hercules.
 
 	Usage: hercules cmd <appName> set -p <programName>=<cmd>...
 	   	   hercules cmd <appName> get -p <programName>
@@ -58,15 +58,24 @@ Set program commands of an application in Hercules.
 		-p, --program <programName>, the name of the program to be set/get
 	Examples: 
 	
-	
 ###entrypoint
 
-Set program entrypoints of an application in Hercules
+Set/Get program entrypoints of an application in Hercules
 
 	Usage: hercules entrypoint <appName> set -p <programName>=<entrypoint>...
 		   hercules entrypoint <appName> get -p <programName>
 	Options:
 		-p, --program <programName>, the name of the program to be set/get
+	Examples: 
+
+###release
+
+List/Rollback application releases in Hercules
+
+	Usage: hercules release <appName> list
+	       hercules release <appName> rollback -v <releaseVersion>
+	Options:
+	       -v, --version <releaseVersion>, the version of the release to be rolled back
 	Examples: 
 
 ###scale
