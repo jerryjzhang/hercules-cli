@@ -13,7 +13,7 @@ Hercules Command Line
 
 ###Deploy app
 
-    usage: hercules deploy <appName> [-s <svnURL> -i <imageURI>]
+    usage: hercules deploy <appName> [-s <svnURL> -i <imageURI> ]
     Options:
     	-s, --svn-url <url>  set the svn url of your code
     	-i, --docker-image <image> set the uri of your docker image
