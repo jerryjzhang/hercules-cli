@@ -5,7 +5,7 @@ To list available commands, run "hercules help".
 
 ###create
 
-Create an application in Hercules.
+Create an application.
 
     Usage: hercules create <appName>
     Examples:
@@ -14,7 +14,7 @@ Create an application in Hercules.
 
 ###delete
 
-Delete an application in Hercules.
+Delete an application.
 
 	Usage: hercules delete <appName>
 	Examples:
@@ -23,7 +23,7 @@ Delete an application in Hercules.
 
 ###deploy
 
-Deploy an application in Hercules.
+Deploy an application.
 
     Usage: hercules deploy <appName> [-s <svnURL> -i <imageURI> -e <env>=<value> -c <programName>=<cmd> -p <programName>=<entrypoint>]
     Options:
@@ -38,7 +38,7 @@ Deploy an application in Hercules.
 
 ###env
 
-Manage environment variables of an application in Hercules.
+Manage application-level or program-level environment variables of an application.
 
 	Usage: hercules env <appName> set [-p <programName>] -e <env>=<val>...
 		   hercules env <appName> unset [-p <programName>] -e <env>...
@@ -50,7 +50,7 @@ Manage environment variables of an application in Hercules.
 	
 ###cmd
 
-Manage program commands of an application in Hercules.
+Manage program commands of an application.
 
 	Usage: hercules cmd <appName> set -p <programName>=<cmd>...
 	   	   hercules cmd <appName> get -p <programName>
@@ -60,7 +60,7 @@ Manage program commands of an application in Hercules.
 	
 ###entrypoint
 
-Manage program entrypoints of an application in Hercules
+Manage program entrypoints of an application.
 
 	Usage: hercules entrypoint <appName> set -p <programName>=<entrypoint>...
 		   hercules entrypoint <appName> get -p <programName>
@@ -70,7 +70,7 @@ Manage program entrypoints of an application in Hercules
 
 ###release
 
-List/Rollback application releases in Hercules
+Manage application releases.
 
 	Usage: hercules release <appName> list
 	       hercules release <appName> rollback -v <releaseVersion>
@@ -80,7 +80,7 @@ List/Rollback application releases in Hercules
 
 ###scale
 
-Scale programs of an application in Hercules.
+Scale programs of an application.
 
     Usage: hercules scale <appName> [<programName>=<replica> <programName>=<replica>...]
     Examples:
