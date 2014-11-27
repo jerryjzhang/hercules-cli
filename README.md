@@ -9,7 +9,7 @@ Hercules Command Line
     Descption: Create an application in Hercules.
     Examples:
     	$ hercules create dsf
-    	Created dsf with id 1417019037871
+    	Created application with id 1417019037871
 
 ###Deploy app
 
@@ -20,7 +20,7 @@ Hercules Command Line
     Descption: Deploy an application in Hercules.
     Examples:
     	$ hercules deploy dsf --svn-url http://svnURL
-    	Deployed application dsf
+    	Created release with id 141701903990
 	
 ###Scale app
 
