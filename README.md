@@ -1,28 +1,34 @@
-jflynn
+Hercules
 ====
 
 ## Description
 
 ## Usage
 
-## Install
+###Create app
 
-To install, use `go get`:
+    usage: hercules create <appName>
+    Create an application in Hercules.
+    Examples:
+    	$ hercules create dsf
+    	Created dsf with id 1417019037871
 
-```bash
-$ go get -d github.com//jflynn
-```
+###Deploy app
 
-## Contribution
+    usage: hercules deploy <appName> [-s <svnURL> -i <imageURI>]
+    Options:
+    	-s, --svn-url <url>  set the svn url of your code
+    	-i, --docker-image <image> set the uri of your docker image
+    Deploy an application in Hercules.
+    Examples:
+    	$ hercules deploy dsf --svn-url http://svnURL
+    	Deployed application dsf
+	
+###Scale app
 
-1. Fork ([https://github.com//jflynn/fork](https://github.com//jflynn/fork))
-1. Create a feature branch
-1. Commit your changes
-1. Rebase your local changes against the master branch
-1. Run test suite with the `go test ./...` command and confirm that it passes
-1. Run `gofmt -s`
-1. Create new Pull Request
-
-## Author
-
-[](https://github.com/)
+    usage: hercules scale <appName> [<programName>=<replica> <programName>=<replica>...]
+    Options:
+    Scale any programs of an application in Hercules.
+    Examples:
+    	$ hercules scale dsf web=3 db=1
+    	Scaled application dsf
