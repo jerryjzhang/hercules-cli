@@ -51,10 +51,11 @@ Set environment variables of an application in Hercules.
 Set program commands of an application in Hercules.
 
 	Usage: hercules cmd <appName> set -p <programName>=<cmd>...
-		   hercules cmd <appName> unset -p <programName>=<cmd>...
-		   hercules cmd <appName> get -p <programName>=<cmd>
+	   	   hercules cmd <appName> unset -p <programName>=<cmd>...
+	   	   hercules cmd <appName> get -p <programName>=<cmd>
 	Examples: 
-
+	
+	
 ###entrypoint
 
 Set program entrypoints of an application in Hercules
