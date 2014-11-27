@@ -1,22 +1,22 @@
 Hercules Command Line
 ====
 
-## Usage
+To list available commands, run "hercules help".
 
-###Create app
+###create
 
 Create an application in Hercules
 
-    usage: hercules create <appName>
+    Usage: hercules create <appName>
     Examples:
     	$ hercules create dsf
     	Created application with id 1417019037871
 
-###Deploy app
+###deploy
 
 Deploy an application in Hercules.
 
-    usage: hercules deploy <appName> [-s <svnURL> -i <imageURI> -e <env>=<value> -c <programName>=<cmd> -p <programName>=<entrypoint>]
+    Usage: hercules deploy <appName> [-s <svnURL> -i <imageURI> -e <env>=<value> -c <programName>=<cmd> -p <programName>=<entrypoint>]
     Options:
     	-s, --svn-url <url>,  set the svn url of your code
     	-i, --docker-image <image>, set the uri of your docker image
@@ -26,22 +26,34 @@ Deploy an application in Hercules.
     Examples:
     	$ hercules deploy dsf -s http://svnURL -c web=start.sh -e DB_URL=localhost:3006 
     	Created release with id 141701903990
+
+###env
+
+Set environment variables of an application in Hercules.
+
+	Usage: hercules env [-t <proc>]
+		   hercules env set [-t <proc>] <var>=<val>...
+		   hercules env unset [-t <proc>] <var>...
+		   hercules env get [-t <proc>] <var>
+	Examples: 
 	
-###Scale app
+###cmd
+
+Set commands of an application in Hercules
+
+###entrypoint
+
+Set entrypoints of an application in Hercules
+
+###scale
 
 Scale any programs of an application in Hercules.
 
-    usage: hercules scale <appName> [<programName>=<replica> <programName>=<replica>...]
+    Usage: hercules scale <appName> [<programName>=<replica> <programName>=<replica>...]
     Examples:
     	$ hercules scale dsf web=3 db=1
     	Scaled application dsf
 
-###Set environmet variables
+###ps
 
-	usage: flynn env [-t <proc>]
-flynn env set [-t <proc>] <var>=<val>...
-flynn env unset [-t <proc>] <var>...
-flynn env get [-t <proc>] <var>
-	
-
-	
+List all running processes of an application.
