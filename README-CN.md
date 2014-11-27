@@ -1,4 +1,4 @@
-##create
+###create
 
 创建应用
 
@@ -7,7 +7,7 @@
         $ hercules create dsf
         Created application with id 1417019037871
     
-##delete
+###delete
 
 删除应用
 
@@ -16,7 +16,7 @@
         $ hercules delete dsf
         Deleted application dsf
     
-##deploy
+###deploy
 
 部署应用，支持三种部署方式：1. SVN源代码 2. docker镜像 3. dockerfile
 
@@ -30,7 +30,7 @@
     $ hercules deploy dsf -s http://svnURL -e DB_URL=localhost:3006 
     Created release with id 141701903990
 
-##scale
+###scale
 
 启动/扩缩容应用，可以单独为应用中每个程序设置进程(replica)个数。
 
@@ -39,7 +39,7 @@
         $ hercules scale dsf web=2 db=1
         Scaled application with 4 processes
 
-##stop 
+###stop 
 
 停止应用，该命令将停止应用所有的进程，要单独停止某个或某些进程，请使用process命令
 
@@ -48,7 +48,7 @@
         $ hercules stop dsf
         Stopped application with 4 processes
 
-##program
+###program
 
 程序的管理命令，可以对程序增删改查
 
@@ -63,7 +63,7 @@
         $ hercules program dsf save -n web -c web=start.sh -e DB_URL=localhost:3006 
         Saved program web
 
-##release
+###release
 
 发布包的管理命令，可以查询和回滚发布包
     
@@ -77,7 +77,7 @@
         141701903990      v1      1.0.0 Release
         141701903991      v2      1.0.1 Release
 
-##process
+###process
 
 进程的管理命令，可以查询和停止进程
 
