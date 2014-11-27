@@ -1,7 +1,5 @@
-Hercules
+Hercules Command Line
 ====
-
-## Description
 
 ## Usage
 
