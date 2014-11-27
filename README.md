@@ -38,7 +38,7 @@ Deploy an application in Hercules.
 
 ###env
 
-Set/Get environment variables of an application in Hercules.
+Manage environment variables of an application in Hercules.
 
 	Usage: hercules env <appName> set [-p <programName>] -e <env>=<val>...
 		   hercules env <appName> unset [-p <programName>] -e <env>...
@@ -50,7 +50,7 @@ Set/Get environment variables of an application in Hercules.
 	
 ###cmd
 
-Set/Get program commands of an application in Hercules.
+Manage program commands of an application in Hercules.
 
 	Usage: hercules cmd <appName> set -p <programName>=<cmd>...
 	   	   hercules cmd <appName> get -p <programName>
@@ -60,7 +60,7 @@ Set/Get program commands of an application in Hercules.
 	
 ###entrypoint
 
-Set/Get program entrypoints of an application in Hercules
+Manage program entrypoints of an application in Hercules
 
 	Usage: hercules entrypoint <appName> set -p <programName>=<entrypoint>...
 		   hercules entrypoint <appName> get -p <programName>
@@ -87,14 +87,17 @@ Scale programs of an application in Hercules.
     	$ hercules scale dsf web=3 db=1
     	Scaled application dsf
 
-###ps
+###process
 
-List all running processes of an application.
+Manage processes of an application.
 
-	Usage: hercules ps <appName>
+	Usage: hercules process <appName> ps
+		   hercules process <appName> kill -p <processID>
 	Examples:
 	    $ hercules ps dsf
 	    ID            Program
 		141701903990  web
 		141701903991  web
 		141701903992  db
+
+
