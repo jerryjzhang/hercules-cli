@@ -5,17 +5,15 @@ Hercules Command Line
 
 ###Create app
 
-```bash
     usage: hercules create <appName>
     Descption: Create an application in Hercules.
     Examples:
     	$ hercules create dsf
     	Created application with id 1417019037871
-```
 
 ###Deploy app
 
-    usage: hercules deploy <appName> [-s <svnURL> -i <imageURI>]
+    usage: hercules deploy <appName> [-s <svnURL> -i <imageURI> -]
     Options:
     	-s, --svn-url <url>  set the svn url of your code
     	-i, --docker-image <image> set the uri of your docker image
