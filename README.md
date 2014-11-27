@@ -39,15 +39,15 @@ Set environment variables of an application in Hercules.
 	
 ###cmd
 
-Set commands of an application in Hercules
+Set program commands of an application in Hercules
 
 ###entrypoint
 
-Set entrypoints of an application in Hercules
+Set program entrypoints of an application in Hercules
 
 ###scale
 
-Scale any programs of an application in Hercules.
+Scale programs of an application in Hercules.
 
     Usage: hercules scale <appName> [<programName>=<replica> <programName>=<replica>...]
     Examples:
