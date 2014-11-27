@@ -13,10 +13,13 @@ Hercules Command Line
 
 ###Deploy app
 
-    usage: hercules deploy <appName> [-s <svnURL> -i <imageURI> ]
+    usage: hercules deploy <appName> [-s <svnURL> -i <imageURI> -e <env>=<value> -c <program>=<cmd> -p <program>=<entrypoint>]
     Options:
-    	-s, --svn-url <url>  set the svn url of your code
-    	-i, --docker-image <image> set the uri of your docker image
+    	-s, --svn-url <url>,  set the svn url of your code
+    	-i, --docker-image <image>, set the uri of your docker image
+    	-e, --env <env>=<value>, set application-level environment variable
+    	-c, --cmd <program>=<cmd>, set cmd of a program
+    	-p, --entrypoint <program>=<entrypoint>, set entrypoint of a program
     Descption: Deploy an application in Hercules.
     Examples:
     	$ hercules deploy dsf --svn-url http://svnURL
