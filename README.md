@@ -85,7 +85,7 @@ List all running processes of an application.
 	Usage: hercules ps <appName>
 	Examples:
 	    $ hercules ps dsf
-	    ID            TYPE
+	    ID            Program
 		141701903990  web
 		141701903991  web
 		141701903992  db
